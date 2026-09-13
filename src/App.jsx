@@ -45,13 +45,11 @@ export default function App() {
 
   // MENGAMBIL DATA DARI FIREBASE (REAL-TIME)
   useEffect(() => {
-    // Sinkronisasi Produk
     const unsubscribeProducts = onSnapshot(collection(db, 'products'), (snapshot) => {
       const productsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       setProducts(productsData);
     });
 
-    // Sinkronisasi Pesanan
     const qOrders = query(collection(db, 'orders'), orderBy('createdAt', 'desc'));
     const unsubscribeOrders = onSnapshot(qOrders, (snapshot) => {
       const ordersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
@@ -167,4 +165,4 @@ export default function App() {
 
   const filteredProducts = category === 'Semua' ? products : products.filter(p => p.category === category);
 
-  return (
+  return }
